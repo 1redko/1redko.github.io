@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1redko | Minecraft Systems & Folia Plugin Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#07090E',
+                            800: '#0D111A',
+                            700: '#141A28',
+                            600: '#1C2436',
+                            border: 'rgba(255, 255, 255, 0.08)'
+                        },
+                        emerald: {
+                            400: '#34D399',
+                            500: '#10B981',
+                            glow: 'rgba(16, 185, 129, 0.25)'
+                        },
+                        accent: {
+                            purple: '#8B5CF6',
+                            cyan: '#06B6D4',
+                            amber: '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom scrollbar & glassmorphism */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1C2436;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981;
+        }
+        .glass-panel {
+            background: rgba(20, 26, 40, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glass-panel-hover:hover {
+            background: rgba(28, 36, 54, 0.85);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+        }
+        .mesh-gradient {
+            background: radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 60%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+                        radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+        }
+        .code-block {
+            background: #0A0D14;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 font-sans selection:bg-emerald-500/30 selection:text-emerald-400 min-h-screen mesh-gradient relative antialiased">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-dark-border px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[1px] shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-dark-800 rounded-[11px] flex items-center justify-center">
+                        <i data-lucide="terminal" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-lg text-white tracking-tight flex items-center gap-2">
+                        1redko <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">dev</span>
+                    </span>
+                    <p class="text-xs text-gray-400 font-mono">Minecraft Systems & Folia Core Engineer</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#projects" class="text-gray-300 hover:text-emerald-400 transition-colors">Projects</a>
+                <a href="#folia" class="text-gray-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Folia Specialization
+                </a>
+                <a href="#experience" class="text-gray-300 hover:text-emerald-400 transition-colors">Experience</a>
+                <a href="#skills" class="text-gray-300 hover:text-emerald-400 transition-colors">Skills & Stack</a>
+                <a href="#snippets" class="text-gray-300 hover:text-emerald-400 transition-colors">Code Lab</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-semibold transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 flex items-center gap-2">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> Get in Touch
+                </a>
+            </nav>
+
+            <!-- Status Indicator -->
+            <div class="flex items-center gap-3">
+                <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark-700/80 border border-dark-border text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 -ml-3"></span>
+                    <span class="text-gray-300 font-mono">Available for projects</span>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-400 hover:text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2 border-t border-dark-border mt-3 space-y-3 font-medium text-sm">
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-emerald-400">Projects</a>
+            <a href="#folia" class="block py-2 text-gray-300 hover:text-emerald-400">Folia Architecture</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-emerald-400">Experience</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-emerald-400">Skills</a>
+            <a href="#snippets" class="block py-2 text-gray-300 hover:text-emerald-400">Code Lab</a>
+            <a href="#contact" class="block py-2 text-emerald-400 font-semibold">Get in Touch</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-36 pb-20 px-6 max-w-7xl mx-auto relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Pill Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-700 border border-dark-border text-xs text-gray-300 font-mono">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>Ex-HawkSMP Staff & Lead Backend Developer</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.15]">
+                    Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">High-Performance</span> Minecraft Systems & Folia Engines.
+                </h1>
+
+                <p class="text-lg text-gray-400 max-w-2xl leading-relaxed">
+                    Specialized in Folia regionized multi-threading, custom SMP mechanics, advanced staff moderation suites, anti-exploit security, and TPS optimization for heavy production servers.
+                </p>
+
+                <!-- Action CTAs -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-dark-900 font-bold shadow-lg shadow-emerald-500/25 transition-all flex items-center gap-2">
+                        <i data-lucide="layers" class="w-4 h-4"></i> Browse Projects
+                    </a>
+                    <button onclick="copyDiscord()" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-dark-600 text-white font-medium border border-dark-border transition-all flex items-center gap-2 group">
+                        <i data-lucide="copy" class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                        <span id="discordBtnText">Copy Discord Tag</span>
+                    </button>
+                    <a href="#folia" class="px-6 py-3.5 rounded-xl text-gray-300 hover:text-white font-medium flex items-center gap-1.5 hover:underline">
+                        <span>Why Folia?</span> <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-400"></i>
+                    </a>
+                </div>
+
+                <!-- Metrics Strip -->
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-dark-border/60 max-w-lg">
+                    <div>
+                        <div class="text-2xl font-heading font-extrabold text-white">8+</div>
+                        <div class="text-xs text-gray-400 font-mono mt-0.5">Custom Plugins & Systems</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-heading font-extrabold text-emerald-400">20.0</div>
+                        <div class="text-xs text-gray-400 font-mono mt-0.5">Target TPS Optimization</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-heading font-extrabold text-white">100%</div>
+                        <div class="text-xs text-gray-400 font-mono mt-0.5">Thread-Safe Concurrency</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal / Code Showcase Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel rounded-2xl overflow-hidden shadow-2xl border border-dark-border relative group">
+                    <div class="bg-dark-800/90 px-4 py-3 border-b border-dark-border flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                            <span class="text-xs text-gray-400 font-mono ml-2">HawkCore::FoliaExecutor.java</span>
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">Active Build</span>
+                    </div>
+                    <div class="p-5 font-mono text-xs text-gray-300 leading-relaxed overflow-x-auto space-y-2 code-block">
+                        <p class="text-gray-500">// Folia Region-Safe Entity Scheduling</p>
+                        <p><span class="text-purple-400">public void</span> <span class="text-blue-400">dispatchCombatCombo</span>(<span class="text-amber-300">Player</span> victim, <span class="text-amber-300">Vector</span> dir) {</p>
+                        <p class="pl-4 text-gray-400">Schedulers.<span class="text-emerald-400 font-bold">forPlayer</span>(plugin, victim, () -> {</p>
+                        <p class="pl-8">victim.<span class="text-cyan-300">damage</span>(<span class="text-orange-400">6.0</span>, attacker);</p>
+                        <p class="pl-8">victim.<span class="text-cyan-300">setVelocity</span>(dir.<span class="text-cyan-300">clone</span>().<span class="text-cyan-300">setY</span>(<span class="text-orange-400">0.35</span>));</p>
+                        <p class="pl-8">victim.<span class="text-cyan-300">addPotionEffect</span>(<span class="text-purple-400">new</span> PotionEffect(</p>
+                        <p class="pl-12">PotionEffectType.<span class="text-emerald-300">SLOWNESS</span>, <span class="text-orange-400">20</span>, <span class="text-orange-400">255</span>, <span class="text-purple-400">false</span>));</p>
+                        <p class="pl-4">});</p>
+                        <p>}</p>
+                        <div class="pt-3 border-t border-dark-border text-[11px] flex items-center justify-between text-gray-400">
+                            <span class="text-emerald-400 flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Zero Region Thread Crossings</span>
+                            <span class="font-mono text-gray-500">Adoptium JDK 25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Competencies & Highlights -->
+    <section class="py-12 px-6 max-w-7xl mx-auto border-t border-b border-dark-border/60">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-panel p-6 rounded-xl space-y-3">
+                <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                    <i data-lucide="network" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-heading font-bold text-white text-base">Folia Multi-Threading</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Deep mastery of regionized entity ticking, chunk schedules, thread-safe asynchronous state caches, and concurrent data models.
+                </p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl space-y-3">
+                <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/20">
+                    <i data-lucide="swords" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-heading font-bold text-white text-base">Custom SMP Combat & Abilities</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Designed Strength SMP S5 weapon abilities: 9 weapon classes, combo triggers, Bow Beams, Wind Burst maces, and custom Re-Roll items.
+                </p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl space-y-3">
+                <div class="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-heading font-bold text-white text-base">Staff Tooling & Auditing</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Built interactive GUI moderation tools, `/p` punishment selectors, anvil proof-logging dialogs, and hierarchy rank policies.
+                </p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl space-y-3">
+                <div class="w-12 h-12 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
+                    <i data-lucide="gauge" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-heading font-bold text-white text-base">Tick & Lag Optimization</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Implemented villager AI lobotomies, async incremental saves, entity cleaners, and chunk purge managers to keep servers at stable 20 TPS.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio Showcase -->
+    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">
+                    <i data-lucide="code" class="w-3.5 h-3.5"></i> Proven Implementations
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
+                    Featured Minecraft Projects & Cores
+                </h2>
+                <p class="text-gray-400 text-sm mt-2 max-w-xl">
+                    Every project below was developed from scratch or refactored for high-performance servers, real staff operations, and customized gameplay.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-dark-800 border border-dark-border text-xs font-medium">
+                <button onclick="filterProjects('all')" class="filter-btn px-3 py-1.5 rounded-lg bg-emerald-500 text-dark-900 font-bold transition-all" data-category="all">All (8)</button>
+                <button onclick="filterProjects('folia')" class="filter-btn px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-category="folia">Folia Cores</button>
+                <button onclick="filterProjects('mechanics')" class="filter-btn px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-category="mechanics">Gameplay & Combat</button>
+                <button onclick="filterProjects('staff')" class="filter-btn px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-category="staff">Staff & Moderation</button>
+                <button onclick="filterProjects('optim')" class="filter-btn px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-category="optim">Performance & Security</button>
+            </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsContainer">
+
+            <!-- PROJECT 1: Hawk SMP Native Core -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="folia mechanics staff">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Folia & Paper 1.21+</span>
+                        <span class="text-xs text-gray-400 font-mono">Core Engine</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        Hawk SMP Core (2.4.0)
+                        <i data-lucide="zap" class="w-5 h-5 text-emerald-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Complete server core tailored for Paper & Folia. Features the full Strength SMP Season 5 Weapon Ability & Strength Scaling framework, interactive player skull punishment GUI (`/p`), custom crafting recipes, and multi-thread safe state synchronization.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> 9 S5 Weapon Classes (Sword, Axe, Bow, Mace, Spear...)</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Native Folia Region Schedulers & Concurrency</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Full `/p` Staff GUI & Ceiling Ladder Policies</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Java 25</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Folia</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Brigadier</span>
+                    </div>
+                    <button onclick="openModal('hawk')" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: DialogPunish -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="staff">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">Paper 1.21</span>
+                        <span class="text-xs text-gray-400 font-mono">Staff Security</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        DialogPunish Engine
+                        <i data-lucide="gavel" class="w-5 h-5 text-purple-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Anvil-driven and GUI-based moderation suite. Prompts staff with interactive evidence/proof input windows before applying bans or mutes, and dispatches structured audit payloads directly to Discord webhooks.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Anvil text input prompt for video/image evidence URLs</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Time ceiling verification matching moderator rank</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Discord Webhook audit payloads with evidence embeds</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Gradle</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Paper API</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Webhooks</span>
+                    </div>
+                    <button onclick="openModal('dialog')" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: Hawk FFA Core -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="mechanics">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">PvP / Kit Arena</span>
+                        <span class="text-xs text-gray-400 font-mono">SQLite Backend</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        Hawk FFA Core
+                        <i data-lucide="crosshair" class="w-5 h-5 text-cyan-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Dedicated Free-For-All arena combat framework featuring instant kit provisioning, killstreak multipliers, combat tag zones, and persistent stats stored via an asynchronous SQLite engine.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> High-frequency combat logger & anti-combat log kills</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Arena block tracking with auto-rollback on reset</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> Asynchronous SQLite stat persistence (K/D, Streaks)</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Java</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">SQLite JDBC</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Arena Engine</span>
+                    </div>
+                    <button onclick="openModal('ffa')" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 4: SpawnerLock -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="optim">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Security & Economy</span>
+                        <span class="text-xs text-gray-400 font-mono">Exploit Patch</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        SpawnerLock
+                        <i data-lucide="lock" class="w-5 h-5 text-amber-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Anti-exploit security utility preventing players or automated dispenser contraptions from converting mob spawners with spawn eggs. Crucial for custom economy and RPG SMP setups.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i> Blocks main-hand, off-hand, and dispenser egg conversion</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i> Natural dungeon vs player-placed spawner filters</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i> Live hot-reload and OP bypass permission routing</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Maven</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Paper 1.21</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Security</span>
+                    </div>
+                    <button onclick="openModal('spawner')" class="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 5: TierAnnounce -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="mechanics">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Tier SMP System</span>
+                        <span class="text-xs text-gray-400 font-mono">Announcements</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        TierAnnounce
+                        <i data-lucide="megaphone" class="w-5 h-5 text-emerald-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Milestone celebration and tier progression broadcast plugin designed for Tier SMP servers. Triggers synced screen titles, particle bursts, sound packets, and customized broadcast styling.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Fully configurable tier unlock levels & titles</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Synced sound effects and particle animations</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> MiniMessage gradient chat formatting support</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Java</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Maven</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">MiniMessage</span>
+                    </div>
+                    <button onclick="openModal('tier')" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 6: Villager Lobotomy & Optimizer -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="optim folia">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">TPS Optimization</span>
+                        <span class="text-xs text-gray-400 font-mono">Performance</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        VillagerLobotomy & AI Tuner
+                        <i data-lucide="activity" class="w-5 h-5 text-blue-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        High-efficiency entity optimization system that freezes idle villager pathfinding AI in trading halls while retaining 100% of trading functionality, restock schedules, and job site interactions.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400"></i> Cuts villager tick load by ~80% in dense trading setups</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400"></i> Preserves trade restocking & inventory click UI</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400"></i> Folia-native chunk purge & entity cleaner companion</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">NMS / Paper</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">AI Ticking</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Folia</span>
+                    </div>
+                    <button onclick="openModal('villager')" class="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 7: ChatCooldown & Anti-Spam -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="staff optim">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-400 border border-teal-500/20">Chat Engine</span>
+                        <span class="text-xs text-gray-400 font-mono">Rate Limiter</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        ChatCooldown & Anti-Flood
+                        <i data-lucide="message-circle" class="w-5 h-5 text-teal-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Async chat rate-limiting middleware that throttles message flood attempts, filters repetitive spam characters, and allows staff to dynamically set server chat speed on the fly via `/chatcooldown set <sec>`.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-400"></i> Dynamic in-game interval adjustment</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-400"></i> Staff bypass permission hierarchy</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-400"></i> Async player chat event handling (zero main-thread lag)</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Java</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Paper API</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Async</span>
+                    </div>
+                    <button onclick="openModal('chat')" class="text-xs font-semibold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROJECT 8: VisualClient 1.21.4 -->
+            <div class="project-card glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between transition-all" data-category="mechanics">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Fabric 1.21.4</span>
+                        <span class="text-xs text-gray-400 font-mono">Client Mod</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white flex items-center justify-between">
+                        VisualClient (1.21.4)
+                        <i data-lucide="monitor" class="w-5 h-5 text-indigo-400"></i>
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        A lightweight Fabric client modification offering clean custom HUD modules, customizable keystrokes, smooth armor status overlays, and aesthetic visual render improvements.
+                    </p>
+                    <div class="space-y-2 pt-2 text-xs text-gray-300">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Modern Fabric Loom 1.21.4 setup</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Client-side HUD rendering with draggable anchors</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Optimized FPS impact with minimal render calls</div>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-dark-border/80 mt-6 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Fabric</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Java 21</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-dark-700 text-gray-300">Client Mod</span>
+                    </div>
+                    <button onclick="openModal('client')" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                        Deep-Dive <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Folia Specialization Deep Dive -->
+    <section id="folia" class="py-20 px-6 max-w-7xl mx-auto border-t border-dark-border/60">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-emerald-500/20">
+            <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono border border-emerald-500/20">
+                        <i data-lucide="split" class="w-3.5 h-3.5"></i> The Next Generation of Minecraft Servers
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
+                        Why Folia Architecture Matters
+                    </h2>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Traditional Paper servers run on a single main thread. As soon as player counts exceed 70-100 or dense farms run, the server begins to lag. <strong>Folia</strong> breaks the world into dynamic region threads, ticking different chunks simultaneously across CPU cores.
+                    </p>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        However, poorly coded plugins will crash Folia or cause severe data corruption if they touch entities across different regions or call legacy Bukkit sync methods. My plugins are engineered natively for Folia from day one:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-dark-800/80 border border-dark-border space-y-2">
+                            <div class="flex items-center gap-2 font-heading font-semibold text-white text-sm">
+                                <i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i> Player Schedulers
+                            </div>
+                            <p class="text-xs text-gray-400">
+                                Dispatches potion effects, inventory changes, and velocities strictly via <code>entity.getScheduler()</code>.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-800/80 border border-dark-border space-y-2">
+                            <div class="flex items-center gap-2 font-heading font-semibold text-white text-sm">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i> Regional World Logic
+                            </div>
+                            <p class="text-xs text-gray-400">
+                                AOE damage (like Trident strikes & Spear lunges) are bound to chunk locations using <code>Schedulers.atLocation</code>.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-800/80 border border-dark-border space-y-2">
+                            <div class="flex items-center gap-2 font-heading font-semibold text-white text-sm">
+                                <i data-lucide="globe" class="w-4 h-4 text-purple-400"></i> Global Server Sync
+                            </div>
+                            <p class="text-xs text-gray-400">
+                                Weather, server-wide broadcasts, and recipe additions execute cleanly on the global server scheduler.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-800/80 border border-dark-border space-y-2">
+                            <div class="flex items-center gap-2 font-heading font-semibold text-white text-sm">
+                                <i data-lucide="database" class="w-4 h-4 text-amber-400"></i> Concurrent State
+                            </div>
+                            <p class="text-xs text-gray-400">
+                                Cooldowns, player combo counters, and strength levels use lock-free <code>ConcurrentHashMap</code> registries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="glass-panel p-6 rounded-2xl border border-dark-border text-xs font-mono space-y-3">
+                        <div class="flex items-center justify-between text-gray-400 pb-2 border-b border-dark-border">
+                            <span>Traditional Bukkit vs Folia</span>
+                            <span class="text-emerald-400">Comparison</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-start justify-between">
+                                <span class="text-red-400">âŒ Bukkit.getScheduler()</span>
+                                <span class="text-gray-500">Throws UnsupportedOp</span>
+                            </div>
+                            <div class="flex items-start justify-between">
+                                <span class="text-emerald-400 font-bold">âœ” Schedulers.forPlayer()</span>
+                                <span class="text-gray-300">Thread-Safe Execution</span>
+                            </div>
+                            <div class="border-t border-dark-border/40 my-2"></div>
+                            <div class="flex items-start justify-between">
+                                <span class="text-red-400">âŒ Cross-Region Entity Edit</span>
+                                <span class="text-gray-500">AsyncCatcher Panic</span>
+                            </div>
+                            <div class="flex items-start justify-between">
+                                <span class="text-emerald-400 font-bold">âœ” Schedulers.atLocation()</span>
+                                <span class="text-gray-300">Chunk-Affinity Bound</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 flex items-center gap-3">
+                        <i data-lucide="check-check" class="w-5 h-5 flex-shrink-0 text-emerald-400"></i>
+                        <span>Ready to scale to 200+ players without TPS drops or threading crashes.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Staff Background -->
+    <section id="experience" class="py-20 px-6 max-w-7xl mx-auto border-t border-dark-border/60">
+        <div class="max-w-3xl mb-12">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">
+                <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Practical Experience
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
+                Staff & Engineering Roles
+            </h2>
+            <p class="text-gray-400 text-sm mt-2">
+                Proven experience handling high-stress server management, staff protocols, and real-time live server troubleshooting.
+            </p>
+        </div>
+
+        <div class="space-y-8 relative before:absolute before:inset-0 before:left-6 before:w-0.5 before:bg-dark-border/80">
+            <!-- Timeline Item 1 -->
+            <div class="relative flex items-start gap-6 group">
+                <div class="w-12 h-12 rounded-full bg-dark-800 border-2 border-emerald-400 flex items-center justify-center text-emerald-400 flex-shrink-0 z-10 shadow-lg shadow-emerald-500/20">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl flex-1 border border-dark-border">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                        <h3 class="text-lg font-heading font-bold text-white">HawkSMP | Staff Member & Core Plugin Developer</h3>
+                        <span class="text-xs font-mono text-gray-400 px-2.5 py-1 rounded bg-dark-700/80">Season 5 - Season Concluded</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        Served on the staff team while driving backend development for Hawk SMP. Developed the custom core plugin running Season 5 Weapon Abilities, Folia multi-threading concurrency, and internal staff punishment tooling.
+                    </p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-400 list-disc list-inside">
+                        <li>Designed the 9 S5 weapon mechanics and craftable weapon re-roll economy.</li>
+                        <li>Built the `/p` (`/punish`) interactive head selector GUI with rank-ceiling enforcement.</li>
+                        <li>Solved Paper alias registration bugs in root `SimpleCommandMap` reflection.</li>
+                        <li>Maintained server health, anti-exploit protections, and player combat fairness.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="relative flex items-start gap-6 group">
+                <div class="w-12 h-12 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 flex-shrink-0 z-10 shadow-lg shadow-cyan-500/20">
+                    <i data-lucide="terminal" class="w-5 h-5"></i>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl flex-1 border border-dark-border">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                        <h3 class="text-lg font-heading font-bold text-white">Freelance Systems Developer & Script Creator</h3>
+                        <span class="text-xs font-mono text-gray-400 px-2.5 py-1 rounded bg-dark-700/80">Ongoing</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Developed custom plugins, Skript setups, and custom server utilities for SMP, FFA, and KitPvP communities.
+                    </p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-400 list-disc list-inside">
+                        <li>Implemented anti-spawner egg conversion security (<span class="text-emerald-400">SpawnerLock</span>).</li>
+                        <li>Built Tier milestone broadcast system (<span class="text-emerald-400">TierAnnounce</span>).</li>
+                        <li>Engineered high-performance villager AI lobotomy and chunk cleanup suites.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tech Stack Matrix -->
+    <section id="skills" class="py-20 px-6 max-w-7xl mx-auto border-t border-dark-border/60">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">
+                <i data-lucide="code-2" class="w-3.5 h-3.5"></i> Technical Stack
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
+                Skills & Technologies
+            </h2>
+            <p class="text-gray-400 text-sm mt-2">
+                A modern toolchain focused on rock-solid concurrency, high throughput, and seamless game feel.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Col 1 -->
+            <div class="glass-panel p-6 rounded-2xl border border-dark-border space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                        <i data-lucide="binary" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-white text-base">Languages & Runtimes</h3>
+                        <p class="text-xs text-gray-400">Core development languages</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Java (17 / 21 / 25)</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Kotlin</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Skript</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">SQL / SQLite</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">YAML / JSON</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">PowerShell / Bash</span>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="glass-panel p-6 rounded-2xl border border-dark-border space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/20">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-white text-base">Server APIs & Platforms</h3>
+                        <p class="text-xs text-gray-400">Minecraft platform ecosystem</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-emerald-400 text-xs font-mono border border-emerald-500/30 font-bold">Folia API</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">PaperMC (1.20 - 1.21.x)</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Purpur / Spigot</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Brigadier Command API</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Fabric Loom (Client Mods)</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">WorldGuard API</span>
+                </div>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="glass-panel p-6 rounded-2xl border border-dark-border space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20">
+                        <i data-lucide="sliders" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-white text-base">Tooling & Systems</h3>
+                        <p class="text-xs text-gray-400">Development and profiling tools</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Gradle & Maven</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Spark Profiler</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Git Version Control</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">MiniMessage & Adventure</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">PacketEvents / ProtocolLib</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-dark-800 text-gray-300 text-xs font-mono border border-dark-border">Discord Webhook Bots</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippet Showcase (Interactive Code Lab) -->
+    <section id="snippets" class="py-20 px-6 max-w-7xl mx-auto border-t border-dark-border/60">
+        <div class="max-w-3xl mb-10">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">
+                <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Architectural Insights
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
+                Production Code Lab
+            </h2>
+            <p class="text-gray-400 text-sm mt-2">
+                Inspect real production code patterns extracted from our SMP cores and moderation frameworks.
+            </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl overflow-hidden border border-dark-border">
+            <div class="flex items-center justify-between bg-dark-800/90 px-6 py-3 border-b border-dark-border">
+                <div class="flex items-center gap-3">
+                    <button onclick="switchTab('tab-weapon')" class="snippet-tab text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" id="btn-tab-weapon">
+                        S5_Weapons_Combo.java
+                    </button>
+                    <button onclick="switchTab('tab-alias')" class="snippet-tab text-xs font-mono px-3 py-1.5 rounded-lg text-gray-400 hover:text-white" id="btn-tab-alias">
+                        Bukkit_Root_Alias_Fix.java
+                    </button>
+                    <button onclick="switchTab('tab-selector')" class="snippet-tab text-xs font-mono px-3 py-1.5 rounded-lg text-gray-400 hover:text-white" id="btn-tab-selector">
+                        Punish_Player_Selector.java
+                    </button>
+                </div>
+                <button onclick="copyCurrentSnippet()" class="text-xs font-mono text-gray-400 hover:text-white flex items-center gap-1.5">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copySnippetLabel">Copy Code</span>
+                </button>
+            </div>
+
+            <!-- Snippet 1 -->
+            <div id="tab-weapon" class="snippet-content p-6 font-mono text-xs text-gray-300 leading-relaxed overflow-x-auto code-block">
+<pre><code><span class="text-gray-500">// Strength SMP S5 Sword & Mace Combo Mechanic</span>
+<span class="text-purple-400">if</span> (spec == WeaponAbilityType.<span class="text-cyan-400">SWORD</span> && spec.matchesItem(mainHand)) {
+    <span class="text-purple-400">if</span> (manager.hasPassive(attacker)) {
+        <span class="text-purple-400">int</span> combo = manager.incrementSwordCombo(attacker.getUniqueId());
+        <span class="text-purple-400">if</span> (combo >= <span class="text-orange-400">3</span>) {
+            <span class="text-gray-500">// Attacks are critical hits until missed</span>
+            event.setDamage(event.getDamage() * <span class="text-orange-400">1.5</span>);
+            Location loc = victim.getLocation().add(<span class="text-orange-400">0</span>, <span class="text-orange-400">1</span>, <span class="text-orange-400">0</span>);
+            loc.getWorld().spawnParticle(Particle.CRIT, loc, <span class="text-orange-400">15</span>, <span class="text-orange-400">0.3</span>, <span class="text-orange-400">0.5</span>, <span class="text-orange-400">0.3</span>, <span class="text-orange-400">0.1</span>);
+            attacker.playSound(loc, Sound.ENTITY_PLAYER_ATTACK_CRIT, <span class="text-orange-400">1.0f</span>, <span class="text-orange-400">1.2f</span>);
+        }
+        <span class="text-purple-400">if</span> (combo >= <span class="text-orange-400">5</span> && manager.hasUltimate(attacker) && !manager.isUltimateActive(attacker.getUniqueId())) {
+            <span class="text-purple-400">if</span> (manager.activateUltimate(attacker, spec)) {
+                <span class="text-gray-500">// Dual wielding (-50% attack cooldown / Haste)</span>
+                Schedulers.forPlayer(plugin, attacker, () -> {
+                    attacker.addPotionEffect(<span class="text-purple-400">new</span> PotionEffect(PotionEffectType.HASTE, <span class="text-orange-400">300</span>, <span class="text-orange-400">2</span>));
+                });
+            }
+        }
+    }
+}</code></pre>
+            </div>
+
+            <!-- Snippet 2 -->
+            <div id="tab-alias" class="snippet-content hidden p-6 font-mono text-xs text-gray-300 leading-relaxed overflow-x-auto code-block">
+<pre><code><span class="text-gray-500">// Bukkit SimpleCommandMap Unnamespaced Root Alias Registration Fix</span>
+<span class="text-purple-400">private void</span> registerFallbackNames() {
+    SimpleCommandMap map = rootCommandMap();
+    <span class="text-purple-400">if</span> (map == <span class="text-purple-400">null</span>) <span class="text-purple-400">return</span>;
+
+    <span class="text-purple-400">for</span> (String spec : SPECS) {
+        String[] parts = spec.split(<span class="text-green-300">":"</span>, <span class="text-orange-400">2</span>);
+        String name = parts[<span class="text-orange-400">0</span>].toLowerCase(Locale.ROOT);
+        List&lt;String&gt; aliases = parts.length == <span class="text-orange-400">1</span> ? List.of() : Arrays.asList(parts[<span class="text-orange-400">1</span>].split(<span class="text-green-300">","</span>));
+
+        <span class="text-gray-500">// 3-Arg registration ensures bare label (e.g., 'p') maps to 'punish'</span>
+        map.register(name, <span class="text-green-300">"hawksmp"</span>, bare(name, name));
+        <span class="text-purple-400">for</span> (String alias : aliases) {
+            Command held = map.getCommand(alias);
+            <span class="text-purple-400">if</span> (held == <span class="text-purple-400">null</span> || isOurs(held)) {
+                map.register(alias, <span class="text-green-300">"hawksmp"</span>, bare(alias, name));
+            }
+        }
+    }
+}</code></pre>
+            </div>
+
+            <!-- Snippet 3 -->
+            <div id="tab-selector" class="snippet-content hidden p-6 font-mono text-xs text-gray-300 leading-relaxed overflow-x-auto code-block">
+<pre><code><span class="text-gray-500">// Interactive /p Player Head Selector with Rank Permission Gates</span>
+<span class="text-purple-400">public void</span> openSelector(Player staff) {
+    List&lt;Player&gt; available = <span class="text-purple-400">new</span> ArrayList&lt;&gt;();
+    <span class="text-purple-400">for</span> (Player p : plugin.getServer().getOnlinePlayers()) {
+        <span class="text-purple-400">if</span> (!p.getUniqueId().equals(staff.getUniqueId())) available.add(p);
+    }
+    <span class="text-purple-400">int</span> size = Math.min(<span class="text-orange-400">54</span>, Math.max(<span class="text-orange-400">27</span>, ((available.size() + <span class="text-orange-400">8</span>) / <span class="text-orange-400">9</span>) * <span class="text-orange-400">9</span>));
+    Inventory inv = Bukkit.createInventory(<span class="text-purple-400">null</span>, size, <span class="text-green-300">"Â§4Punish: Â§cSelect Player"</span>);
+
+    <span class="text-purple-400">for</span> (<span class="text-purple-400">int</span> i = <span class="text-orange-400">0</span>; i &lt; Math.min(size, available.size()); i++) {
+        Player p = available.get(i);
+        ItemStack skull = <span class="text-purple-400">new</span> ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        <span class="text-purple-400">if</span> (meta != <span class="text-purple-400">null</span>) {
+            meta.setOwningPlayer(p);
+            meta.setDisplayName(<span class="text-green-300">"Â§e"</span> + p.getName());
+            skull.setItemMeta(meta);
+        }
+        inv.setItem(i, skull);
+    }
+    staff.openInventory(inv);
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Commission Section -->
+    <section id="contact" class="py-24 px-6 max-w-7xl mx-auto border-t border-dark-border/60">
+        <div class="glass-panel rounded-3xl p-8 sm:p-14 text-center max-w-3xl mx-auto relative overflow-hidden border border-emerald-500/25">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-6 border border-emerald-500/20 shadow-xl shadow-emerald-500/10">
+                <i data-lucide="mail" class="w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight mb-4">
+                Let's Build Something Exceptional
+            </h2>
+            <p class="text-gray-300 text-sm max-w-xl mx-auto mb-8 leading-relaxed">
+                Whether you need a custom Folia server core, specialized combat mechanics, anti-cheat & staff auditing systems, or a full SMP framework â€” feel free to reach out.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="copyDiscord()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold transition-all shadow-xl shadow-emerald-500/25 flex items-center justify-center gap-2 group">
+                    <i data-lucide="copy" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    <span id="contactDiscordBtn">Copy Discord Tag</span>
+                </button>
+                <a href="#hero" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel hover:bg-dark-600 text-white font-medium border border-dark-border transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="arrow-up" class="w-4 h-4"></i> Back to Top
+                </a>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-dark-border/60 flex items-center justify-center gap-6 text-xs text-gray-400 font-mono">
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> High Availability</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> Folia Specialist</span>
+                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-400"></span> Fast Delivery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-dark-border text-center text-xs text-gray-400 font-mono">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>Â© 2026 1redko. Designed & Engineered for High-Performance Minecraft Servers.</p>
+            <p class="text-gray-400">Native Folia & PaperMC Core Systems</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Project Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl border border-emerald-500/30 overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div class="bg-dark-800/95 px-6 py-4 border-b border-dark-border flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div id="modalIcon" class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center"></div>
+                    <h3 id="modalTitle" class="font-heading font-bold text-white text-lg"></h3>
+                </div>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-dark-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4 max-h-[75vh] overflow-y-auto text-sm text-gray-300">
+                <div id="modalBadges" class="flex flex-wrap gap-2"></div>
+                <div id="modalDescription" class="text-gray-300 leading-relaxed"></div>
+                
+                <div class="space-y-2 pt-2">
+                    <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider text-emerald-400">Technical Highlights & Architecture:</h4>
+                    <ul id="modalHighlights" class="space-y-1.5 text-xs text-gray-400 list-disc list-inside"></ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider text-cyan-400">Folia Concurrency & Implementation:</h4>
+                    <p id="modalFoliaNotes" class="text-xs text-gray-400 font-mono bg-dark-800 p-3 rounded-xl border border-dark-border"></p>
+                </div>
+            </div>
+            <div class="bg-dark-800/80 px-6 py-3 border-t border-dark-border flex items-center justify-end">
+                <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-dark-700 hover:bg-dark-600 text-white font-medium text-xs transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-emerald-500/40 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-mono transform translate-y-20 opacity-0 transition-all duration-300">
+        <i data-lucide="check" class="w-4 h-4"></i>
+        <span id="toastMsg">Discord Tag copied to clipboard!</span>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Copy Discord Function
+        function copyDiscord() {
+            const discordTag = "1redko"; // user handle
+            navigator.clipboard.writeText(discordTag).then(() => {
+                showToast("Discord tag ('" + discordTag + "') copied to clipboard!");
+            }).catch(() => {
+                showToast("Discord: 1redko");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Project Filtering
+        function filterProjects(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === cat) {
+                    btn.className = "filter-btn px-3 py-1.5 rounded-lg bg-emerald-500 text-dark-900 font-bold transition-all";
+                } else {
+                    btn.className = "filter-btn px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all";
+                }
+            });
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (cat === 'all' || cardCat.includes(cat)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project Deep-Dive Modal Data
+        const projectData = {
+            hawk: {
+                title: "Hawk SMP Core 2.4.0 (Folia & Paper Native)",
+                icon: "zap",
+                badges: ["Java 25", "Folia Concurrency", "Brigadier Commands", "S5 Mechanics"],
+                desc: "The primary engine of Hawk SMP. Rebuilt from the ground up to achieve 100% thread safety across Folia's regionized tick threads while delivering the official Season 5 Weapon Abilities suite.",
+                highlights: [
+                    "9 S5 Weapon Classes: Sword 3/5-hit combos, Axe 5-crit stun, Bow beam 3x shots, Mace Wind Burst II bounce & cooldown reduction, Spear Lunge III dash, Armor Netherite toughness & Absorption IV, Trident lightning & shield break, Crossbow shield pierce & ignite.",
+                    "Root Bukkit Alias Engine: Resolved Bukkit SimpleCommandMap alias mapping bugs so /p and bare commands execute without namespace requirements.",
+                    "Interactive /p GUI: Skulls for online targets, capability ceiling inspection per rank ladder, and console dispatch auditing.",
+                    "High-Throughput Optimization: Embedded villager lobotomies, async incremental save schedulers, and chunk purge managers."
+                ],
+                foliaNotes: "Uses Schedulers.forPlayer for player mutations, Schedulers.atLocation for regional explosions/lightning, and Schedulers.global for weather duration."
+            },
+            dialog: {
+                title: "DialogPunish Engine",
+                icon: "gavel",
+                badges: ["Paper 1.21", "Anvil UI", "Staff Security", "Discord Webhooks"],
+                desc: "A rigorous moderation and evidence-collection pipeline for staff members. Prevents unsubstantiated player punishments by enforcing evidence link submissions.",
+                highlights: [
+                    "Virtual Anvil Input Dialogs: Prompts moderators to submit medal.tv, streamable, or image proof before completing punishment.",
+                    "Time Ceilings: Prevents lower-tier staff from exceeding max ban or mute lengths defined in configuration.",
+                    "Audit Dispatcher: Automatically logs staff actor, victim, duration, and evidence link to Discord moderation channels."
+                ],
+                foliaNotes: "Inventory click verification is safely guarded against frozen players and off-thread inventory modifications."
+            },
+            ffa: {
+                title: "Hawk FFA Core (Kit & Arena Framework)",
+                icon: "crosshair",
+                badges: ["SQLite JDBC", "Combat Engine", "Arena Tracking", "Paper 1.21"],
+                desc: "A fast-paced competitive kit FFA server core engineered for zero hit-registration delay and smooth PvP gameplay.",
+                highlights: [
+                    "Instant Kit Equipping: Zero-tick loadout deployment upon respawn or command.",
+                    "Arena Block Rollback: Tracks temporary cobwebs and blocks placed during combat, resetting the arena automatically.",
+                    "Async SQLite Stat Tracker: Persists K/D ratios, highest killstreaks, and total damage dealt without main-thread I/O bottlenecks."
+                ],
+                foliaNotes: "Safe SQLite asynchronous query pool using HikariCP and thread-separated database operations."
+            },
+            spawner: {
+                title: "SpawnerLock Exploit Protection",
+                icon: "lock",
+                badges: ["Paper 1.21", "Anti-Exploit", "Economy Security", "Maven"],
+                desc: "Essential economy and survival protection plugin preventing players or dispensers from converting valuable spawners into arbitrary mob types.",
+                highlights: [
+                    "Main-hand, off-hand, and dispenser drop interception.",
+                    "Configurable whitelist distinguishing naturally spawned dungeon spawners from player-placed spawners.",
+                    "Customizable MiniMessage error messages and sound effects."
+                ],
+                foliaNotes: "Listens on PlayerInteractEvent and BlockDispenseEvent with zero state mutation across tick threads."
+            },
+            tier: {
+                title: "TierAnnounce Milestone Broadcaster",
+                icon: "megaphone",
+                badges: ["MiniMessage", "Tier SMP", "Packet Sound", "Maven"],
+                desc: "Progression broadcast engine designed to celebrate player tier advances with synchronized audio-visual feedback.",
+                highlights: [
+                    "Synchronized screen titles, chat banners, and sound effects.",
+                    "MiniMessage gradient formatting and Adventure component support.",
+                    "Configurable milestones for tier upgrades."
+                ],
+                foliaNotes: "Broadcasts dispatched asynchronously through Paper's Adventure audience API."
+            },
+            villager: {
+                title: "VillagerLobotomy & AI Tuner",
+                icon: "activity",
+                badges: ["Tick Optimizer", "Folia Compatible", "NMS / Paper", "20 TPS"],
+                desc: "Advanced AI optimization algorithm eliminating pathfinding overhead in massive trading setups while keeping trade interfaces responsive.",
+                highlights: [
+                    "Freezes brain AI tick trees when villagers are confined to 1x1 workstations.",
+                    "Preserves profession restock schedules, gossip, and trading UI.",
+                    "Brings 100+ villager trading setups from 12 TPS back to a solid 20 TPS."
+                ],
+                foliaNotes: "Integrates directly with Folia's region scheduler, executing AI toggles per chunk region."
+            },
+            chat: {
+                title: "ChatCooldown & Anti-Flood",
+                icon: "message-circle",
+                badges: ["Async Chat", "Rate Limiting", "Staff Commands", "Anti-Flood"],
+                desc: "Asynchronous chat flood mitigation protecting chat readability and server network bandwidth.",
+                highlights: [
+                    "Per-player message cooldown with staff bypass hierarchy.",
+                    "Dynamic in-game speed adjustment via /chatcooldown.",
+                    "100% async pipeline preventing main-thread lag during bot floods."
+                ],
+                foliaNotes: "AsyncChatEvent listeners that never block Folia region threads."
+            },
+            client: {
+                title: "VisualClient 1.21.4 (Fabric Client Mod)",
+                icon: "monitor",
+                badges: ["Fabric Loom", "Client-Side", "Custom HUD", "Java 21"],
+                desc: "Clean client-side modification for modern Minecraft 1.21.4 providing customizable UI HUD overlays and visual enhancements.",
+                highlights: [
+                    "Customizable HUD elements (Armor status, potion indicators, keystrokes).",
+                    "Lightweight footprint avoiding FPS drops.",
+                    "Seamless Fabric Loader compatibility."
+                ],
+                foliaNotes: "Pure client-side rendering utilizing modern Fabric Loom mappings."
+            }
+        };
+
+        function openModal(key) {
+            const item = projectData[key];
+            if (!item) return;
+
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalIcon').innerHTML = `<i data-lucide="${item.icon}" class="w-4 h-4"></i>`;
+            document.getElementById('modalDescription').innerText = item.desc;
+            
+            // Badges
+            const badgesContainer = document.getElementById('modalBadges');
+            badgesContainer.innerHTML = item.badges.map(b => `<span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-dark-700 text-emerald-400 border border-dark-border">${b}</span>`).join('');
+
+            // Highlights
+            const listContainer = document.getElementById('modalHighlights');
+            listContainer.innerHTML = item.highlights.map(h => `<li>${h}</li>`).join('');
+
+            // Folia
+            document.getElementById('modalFoliaNotes').innerText = item.foliaNotes;
+
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Close on backdrop click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') closeModal();
+        });
+
+        // Snippet Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.snippet-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.snippet-tab').forEach(btn => {
+                btn.className = "snippet-tab text-xs font-mono px-3 py-1.5 rounded-lg text-gray-400 hover:text-white";
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).className = "snippet-tab text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+        }
+
+        function copyCurrentSnippet() {
+            const activeSnippet = document.querySelector('.snippet-content:not(.hidden) pre code');
+            if (activeSnippet) {
+                navigator.clipboard.writeText(activeSnippet.innerText).then(() => {
+                    const label = document.getElementById('copySnippetLabel');
+                    label.innerText = "Copied!";
+                    setTimeout(() => label.innerText = "Copy Code", 2000);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
